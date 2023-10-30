@@ -2,10 +2,11 @@
 using namespace std;
 int main ()
 {
-long long int a, b;
-while ( cin >> a >> b )
-{
-cout << abs(b - a) << "\n";
-}
-return 0;
+    long long int a, b;
+    while ( cin >> a >> b )
+    {
+        cout << abs(b - a) << "\n";
+    }
+    
+    return 0;
 }
