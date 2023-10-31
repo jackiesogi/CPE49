@@ -77,7 +77,7 @@ int main ()
 
 ## You can say 11
 * 套用檢驗11倍數的方法
-* getline (cin, entry) 從 cin 流中讀一列字元直到碰到 '\n'（因為沒有指定delim）
+* getline (cin, entry) 從 cin 流中讀一列字元直到碰到 '\\n'（因為沒有指定delim）
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
@@ -250,7 +250,7 @@ int main() {
 ```
 
 ## Summing digits
-* 利用 string 來存輸入的數字, 在一個位數一個位數轉
+* 利用 string 來存輸入的數字, 再一個位數一個位數轉
 ```c++
 #include <iostream>
 #include <string>
@@ -357,6 +357,8 @@ int main(){
 ```
 
 ## Common permutation
+* getline(cin, a)，從cin流抓一個int存到a
+
 ```c++
 #include <iostream>
 #include <string>
