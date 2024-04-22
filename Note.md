@@ -353,7 +353,6 @@ int main(){
 
     return 0;
 }
-}
 ```
 
 ## Common permutation
@@ -392,5 +391,90 @@ int main(){
         cout << endl;
     }
     return 0;
+}
+```
+
+## Train Swapping
+* bubble sort
+```c
+#include <stdio.h>
+
+int main()
+{
+    int kase, n;
+
+    scanf("%d", &kase);
+
+    for(int i = 0; i < kase; i++)
+    {
+        scanf("%d", &n);
+        int data[n];
+
+        for(int j = 0; j < n; j++)
+        {
+            scanf("%d", &data[j]);
+        }
+
+        int count = 0;
+        for(int k = n; k > 1; k--)
+        {
+            for(int l = 0; l < k - 1; l++)
+            {
+                if(data[l] > data[l+1])
+                {
+                    int temp = data[l];
+                    data[l] = data[l+1];
+                    data[l+1] = temp;
+                    count++;
+                }
+            }
+        }
+
+        printf("Optimal train swapping takes %d swaps\n", count);
+    }
+
+    return 0;
+}
+```
+
+## The 3n+1 Problem
+- 很北爛的題目，測資a和b不一定a比較小，要自己比較一下
+- 基本上按照他的演算法來寫不會超時
+- scanf()的回傳值是成功讀取到的數量，不然就是EOF或0
+```c
+#include <stdio.h>
+
+#define max(a,b) ((a)>(b)?(a):(b))
+#define min(a,b) ((a)<(b)?(a):(b))
+
+int answer[1000000] = {0};
+
+int get_cycle(int num) {
+	if(answer[num] != 0)  return answer[num];
+
+	int count = 1;
+	while(num != 1) {
+		if(num & 0x0001)  num = num * 3 + 1;
+		else  num >>= 1;
+		count++;
+	}
+	answer[num] = count;
+	return count;
+}
+
+int main() {
+	int a, b;
+	while(scanf("%d %d", &a, &b) == 2) {
+		int max_cycle = 0;
+
+		for(int num = min(a, b); num <= max(a, b); num++) {
+			int tmp_cycle = get_cycle(num);
+			if(tmp_cycle > max_cycle) {
+				max_cycle = tmp_cycle;
+			}
+		}
+		printf("%d %d %d\n", a, b, max_cycle);
+	}
+	return 0;
 }
 ```
